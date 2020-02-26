@@ -10,8 +10,14 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
+    - name: Install sshpass
+      run: apt install sshpass
+
     - name: Install Dependencies
       run: yarn
 
     - name: Build
       run: yarn build
+
+    - name: Deploy
+      run: sshpass -p "${{ secrets.GITHUB_USER_PASS }}" scp -r build/* github@mirocosic.com:/var/www/mirocosic.com.com
