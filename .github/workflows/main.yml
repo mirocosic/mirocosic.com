@@ -20,4 +20,15 @@ jobs:
       run: yarn build
 
     - name: Deploy
-      run: sshpass -p "${{ secrets.GITHUB_USER_PASS }}" scp -r build/* github@mirocosic.com:/var/www/mirocosic.com.com
+      uses: horochx/deploy-via-scp@v1.0.1
+      with:
+        local: build # eg: dist
+        remote: /var/www/mirocosic.com.com # eg: /home/github-action
+        host: mirocosic.com # eg: example.com
+        port: 22 # eg: 22
+        user: github # eg: github-action
+        key: ${{ secrets.GITHUB_KEY }} 
+
+
+    #- name: Deploy
+    #  run: sshpass -p "${{ secrets.GITHUB_USER_PASS }}" scp -r build/* github@mirocosic.com:/var/www/mirocosic.com.com
