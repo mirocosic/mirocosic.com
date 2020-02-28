@@ -1,30 +1,34 @@
 import React from 'react'
-import logo from './logo.svg'
-import face from "./assets/face.png"
-import linked from "./assets/linked.png"
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import Projects from './pages/projects'
+import Home from './pages/home'
+import Contact from './pages/contact'
+import About from './pages/about'
+
 import './App.css'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Hi!</h1>
-        <h5>I'm currently building my new awesome page with: </h5>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          In the meantime, you can find me on these locations:
-        </p>
-        <div style={{ flex: 1, flexDirection: "row" }}>
-          <a href="https://www.facebook.com/miro.cosic.vuk" target="_blank" rel="noopener noreferrer">
-            <img src={face} className="social" alt=""/>
-          </a>
-          <a href="https://www.linkedin.com/in/mirocosic" target="_blank" rel="noopener noreferrer">
-            <img src={linked} className="social" alt=""/>
-          </a>
-        </div>
-      </header>
-    </div>
-  );
+    <Router>
+      <div className="bg-gray c-light">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <ul className="navbar-nav mr-auto">
+          <li><Link to={'/'} className="nav-link"> Home </Link></li>
+          <li><Link to={'/about'} className="nav-link"> About </Link></li>
+          <li><Link to={'/projects'} className="nav-link"> Projects </Link></li>
+          <li><Link to={'/contact'} className="nav-link"> Contact </Link></li>
+        </ul>
+        </nav>
+        <hr />
+        <Switch>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/about' component={About} />
+            <Route exact path='/projects' component={Projects} />
+            <Route exact path='/contact' component={Contact} />
+        </Switch>
+      </div>
+    </Router>
+  )
 }
 
 export default App;

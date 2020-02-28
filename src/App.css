@@ -40,3 +40,15 @@
 .social {
   width: 4rem
 }
+
+.bg-gray {
+  background: #282c34;
+}
+
+.c-light {
+  color: white;
+}
+
+.full-height {
+  min-height: 100vh;
+}
