@@ -10,9 +10,11 @@ const Home = function(){
       <h1>Hi!</h1>
       <h5>I'm currently building my new awesome page with: </h5>
       <img src={logo} className="App-logo" alt="logo" />
+
       <p>
         In the meantime, you can find me on these locations:
       </p>
+
       <div style={{ flex: 1, flexDirection: "row" }}>
         <a href="https://www.facebook.com/miro.cosic.vuk" target="_blank" rel="noopener noreferrer">
           <img src={face} className="social" alt=""/>
