@@ -10,15 +10,10 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: Install sshpass
-      run: sudo apt-get install sshpass
-
     - name: Install Dependencies
       run: yarn
 
     - name: Build
-      env:
-        REACT_APP_MAILGUN_KEY: ${{ secrets.MAILGUN_KEY}}
       run: yarn build
 
     - name: Deploy
