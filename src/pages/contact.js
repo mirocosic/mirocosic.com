@@ -1,8 +1,27 @@
-import React from 'react'
+import React, { Component } from 'react'
 import face from "../assets/face.png"
 import linked from "../assets/linked.png"
+import mailgun from "mailgun.js"
 
-const Contact = function() {
+class Contact extends Component {
+
+  componentDidMount(){
+      this.mailgun = mailgun.client({ username: "mirocosic@gmail.com", key: process.env.MAILGUN_KEY})
+  }
+
+  sendMessage = () => {
+    this.mailgun.messages.create('mirocosic.com', {
+    from: "Excited User <mailgun@mirocosic.com>",
+    to: ["mirocosic@gmail.com"],
+    subject: "Hello",
+    text: "Testing some Mailgun awesomness!",
+    html: "<h1>Testing some Mailgun awesomness!</h1>"
+  })
+  .then(msg => console.log(msg)) // logs response data
+  .catch(err => console.log(err)); // logs any error
+  }
+
+  render() {
     return (
         <div className="bg-gray full-height">
           <h2>Contact</h2>
@@ -16,8 +35,13 @@ const Contact = function() {
             </a>
           </div>
 
+          <button onClick={() => this.sendMessage()}>
+            Contact
+          </button>
+
         </div>
     )
   }
+}
 
 export default Contact
