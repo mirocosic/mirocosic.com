@@ -1,24 +1,23 @@
 import React, { Component } from 'react'
 import face from "../assets/face.png"
 import linked from "../assets/linked.png"
-import mailgun from "mailgun.js"
+import emailjs from "emailjs-com"
 
 class Contact extends Component {
 
-  componentDidMount(){
-    this.mailgun = mailgun.client({ username: "mirocosic@gmail.com", key: process.env.REACT_APP_MAILGUN_KEY})
+  state = {
+    message: ""
   }
 
   sendMessage = () => {
-    this.mailgun.messages.create('mirocosic.com', {
-    from: "Excited User <mailgun@mirocosic.com>",
-    to: ["mirocosic@gmail.com"],
-    subject: "Hello",
-    text: "Testing some Mailgun awesomness!",
-    html: "<h1>Testing some Mailgun awesomness!</h1>"
-  })
-  .then(msg => console.log(msg)) // logs response data
-  .catch(err => console.log(err)); // logs any error
+    emailjs
+    .send("mailgun", "template_pfPZdUe9", {message_html: this.state.message}, "user_WeZ2vU2G3qMjDStWpb1rL")
+    .then(function(response) {
+      console.log('SUCCESS!', response.status, response.text);
+      alert("SENT!!")
+   }, function(error) {
+      console.log('FAILED...', error);
+   });
   }
 
   render() {
@@ -35,6 +34,8 @@ class Contact extends Component {
               <img src={linked} className="social" alt=""/>
             </a>
           </div>
+
+          <textarea onChange={e => this.setState({ message: e.target.value })}></textarea>
 
           <button onClick={() => this.sendMessage()}>
             Contact
