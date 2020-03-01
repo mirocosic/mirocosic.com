@@ -17,6 +17,8 @@ jobs:
       run: yarn
 
     - name: Build
+      env:
+        REACT_APP_MAILGUN_KEY: ${{ secrets.MAILGUN_KEY}}
       run: yarn build
 
     - name: Deploy
