@@ -6,7 +6,7 @@ import mailgun from "mailgun.js"
 class Contact extends Component {
 
   componentDidMount(){
-      this.mailgun = mailgun.client({ username: "mirocosic@gmail.com", key: process.env.MAILGUN_KEY})
+    this.mailgun = mailgun.client({ username: "mirocosic@gmail.com", key: process.env.REACT_APP_MAILGUN_KEY})
   }
 
   sendMessage = () => {
@@ -22,6 +22,7 @@ class Contact extends Component {
   }
 
   render() {
+    console.log(process.env)
     return (
         <div className="bg-gray full-height">
           <h2>Contact</h2>
