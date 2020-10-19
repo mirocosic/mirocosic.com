@@ -1,5 +1,6 @@
 import React from 'react'
 import { Page } from "../components"
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 export default function() {
   return (
@@ -28,6 +29,9 @@ export default function() {
         <li>Redux Saga</li>
       </ul>
 
+      <h5>Support</h5>
+      <p>For further information about the app, usage, problems or suggestions, please use the contact form <Link to={'/contact'}>HERE</Link></p>
+      <p>Any bug report is more than welcome! 🐛</p>
 
     </Page>
   )
