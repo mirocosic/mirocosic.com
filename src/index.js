@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 // components takes precedence over default styles.
 toast.configure()
 
-window.location.replace("http://www.w3schools.com");
+window.location.replace("koalifyed://docusign");
 
 ReactDOM.render(
   <BrowserRouter>
