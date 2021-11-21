@@ -6,6 +6,7 @@ import Contact from './pages/contact'
 import About from './pages/about'
 import Blog from './pages/blog'
 import xTrack from './pages/xtrack'
+import SeenLanding from "./pages/seen-landing"
 import logo from './logo.svg'
 
 import './App.css'
@@ -40,6 +41,7 @@ function App() {
               <Route exact path='/projects/xtrack' component={xTrack} />
               <Route exact path='/blog' component={Blog} />
               <Route exact path='/contact' component={Contact} />
+              <Route exact path='/seen' component={SeenLanding} />
           </Switch>
         </div>
 
